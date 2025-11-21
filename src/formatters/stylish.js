@@ -1,19 +1,39 @@
-const stylish = (diff) => {
-  const lines = diff.flatMap((node) => {
-    switch (node.type) {
-    case 'removed':
-      return [`- ${node.key}: ${node.value}`]
-    case 'added':
-      return [`+ ${node.key}: ${node.value}`]
-    case 'changed':
-      return [`- ${node.key}: ${node.oldValue}`, `+ ${node.key}: ${node.newValue}`]
-    case 'unchanged':
-      return [`  ${node.key}: ${node.value}`]
-    default:
-      return []
+const indent = (depth, spaces = 4) => ' '.repeat(depth * spaces - 2)
+const bracketIndent = (depth, spaces = 4) => ' '.repeat((depth - 1) * spaces)
+
+const formatValue = (value, depth) => {
+  if (typeof value !== 'object' || value === null) {
+    return `${value}`
+  }
+
+  const entries = Object.entries(value)
+    .map(([key, val]) => `${indent(depth + 1)}  ${key}: ${formatValue(val, depth + 1)}`)
+
+  return `{\n${entries.join('\n')}\n${bracketIndent(depth)}}`
+}
+
+const stylish = (tree) => {
+  const iter = (node, depth) => node.map((item) => {
+    switch (item.type) {
+      case 'added':
+        return `${indent(depth)}+ ${item.key}: ${formatValue(item.value, depth)}`
+      case 'deleted':
+        return `${indent(depth)}- ${item.key}: ${formatValue(item.value, depth)}`
+      case 'unchanged':
+        return `${indent(depth)}  ${item.key}: ${formatValue(item.value, depth)}`
+      case 'changed':
+        return [
+          `${indent(depth)}- ${item.key}: ${formatValue(item.oldValue, depth)}`,
+          `${indent(depth)}+ ${item.key}: ${formatValue(item.newValue, depth)}`
+        ].join('\n')
+      case 'nested':
+        return `${indent(depth)}  ${item.key}: {\n${iter(item.children, depth + 1)}\n${bracketIndent(depth)}  }`
+      default:
+        throw new Error(`Unknown type: ${item.type}`)
     }
-  })
-  return ['{', ...lines, '}'].join('\n')
+  }).join('\n')
+
+  return `{\n${iter(tree, 1)}\n}`
 }
 
 export default stylish
