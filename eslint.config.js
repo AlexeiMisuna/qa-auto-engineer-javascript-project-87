@@ -21,7 +21,10 @@ export default [
     },
 
     rules: {
-      semi: ["warn", "never"],
+      "@stylistic/quotes": "off",
+      "@stylistic/indent": "off",
+      "@stylistic/comma-dangle": "off",
+      semi: ["off"],
       quotes: ["error", "double"],
       indent: ["error", 2],
       "no-console": "warn",
