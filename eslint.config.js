@@ -1,12 +1,12 @@
-import js from "@eslint/js"
-import stylisticPlugin from "@stylistic/eslint-plugin"
+import js from "@eslint/js";
+import stylisticPlugin from "@stylistic/eslint-plugin";
 
 export default [
   js.configs.recommended,
-
   {
     files: ["**/*.js"],
     ignores: ["node_modules/", "dist/"],
+
     plugins: {
       "@stylistic": stylisticPlugin,
     },
@@ -28,6 +28,7 @@ export default [
       "@stylistic/quotes": "off",
       "@stylistic/indent": "off",
       "@stylistic/comma-dangle": "off",
+
       semi: ["off"],
       quotes: ["error", "double"],
       indent: ["error", 2],
@@ -35,4 +36,4 @@ export default [
       "no-unused-vars": ["warn", { args: "none", ignoreRestSiblings: true }],
     },
   },
-]
+];
