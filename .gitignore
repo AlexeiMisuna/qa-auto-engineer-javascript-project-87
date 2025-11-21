@@ -1,2 +1,3 @@
 sonar-project
 *.cast
+/node_modules/
