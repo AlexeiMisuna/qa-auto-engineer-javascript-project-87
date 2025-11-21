@@ -1,39 +1,38 @@
-import js from "@eslint/js";
-import stylisticPlugin from "@stylistic/eslint-plugin";
+import js from '@eslint/js';
+import stylisticPlugin from '@stylistic/eslint-plugin';
 
 export default [
   js.configs.recommended,
   {
-    files: ["**/*.js"],
-    ignores: ["node_modules/", "dist/"],
+    files: ['**/*.js'],
+    ignores: ['node_modules/', 'dist/'],
 
     plugins: {
-      "@stylistic": stylisticPlugin,
+      '@stylistic': stylisticPlugin,
     },
 
     languageOptions: {
       ecmaVersion: 2021,
-      sourceType: "module",
+      sourceType: 'module',
 
       globals: {
-        describe: "readonly",
-        test: "readonly",
-        expect: "readonly",
-        process: "readonly",
-        console: "readonly",
+        describe: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        process: 'readonly',
+        console: 'readonly',
       },
     },
 
     rules: {
-      "@stylistic/quotes": "off",
-      "@stylistic/indent": "off",
-      "@stylistic/comma-dangle": "off",
+      '@stylistic/quotes': ['error', 'single'],
+      '@stylistic/indent': ['error', 2],
+      '@stylistic/comma-dangle': ['error', 'always-multiline'],
+      '@stylistic/semi': ['error', 'always'],
+      '@stylistic/arrow-parens': ['error', 'as-needed'],
 
-      semi: ["off"],
-      quotes: ["error", "double"],
-      indent: ["error", 2],
-      "no-console": "warn",
-      "no-unused-vars": ["warn", { args: "none", ignoreRestSiblings: true }],
+      'no-console': 'warn',
+      'no-unused-vars': ['warn', { args: 'none', ignoreRestSiblings: true }],
     },
   },
 ];
