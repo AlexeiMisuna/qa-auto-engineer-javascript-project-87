@@ -1,27 +1,31 @@
-module.exports = {
-  env: {
-    node: true,
-    es2021: true,
-    jest: true,
-  },
-  parserOptions: {
-    ecmaVersion: 2021,
-    sourceType: 'module',
-  },
-  rules: {
-    // Общий стиль кода
-    semi: ['off'], // не требует точку с запятой
-    quotes: ['error', 'single'], // одинарные кавычки
-    indent: ['error', 2], // отступ 2 пробела
+import js from "@eslint/js";
 
-    // Функциональный стиль и иммутабельность
-    'no-var': 'error', // запрещает var
-    'prefer-const': 'error', // использовать const, если возможно
-    'no-param-reassign': 'error', // запрещает мутировать параметры функции
-    'no-console': 'warn', // предупреждает про console.log
+export default [
+  js.configs.recommended,
 
-    // Переменные
-    'no-unused-vars': ['warn', { args: 'none', ignoreRestSiblings: true }],
+  {
+    files: ["**/*.js"],
+    ignores: ["node_modules/", "dist/"],
+
+    languageOptions: {
+      ecmaVersion: 2021,
+      sourceType: "module",
+
+      globals: {
+        describe: "readonly",
+        test: "readonly",
+        expect: "readonly",
+        process: "readonly",
+        console: "readonly",
+      },
+    },
+
+    rules: {
+      semi: ["off"],
+      quotes: ["error", "double"],
+      indent: ["error", 2],
+      "no-console": "warn",
+      "no-unused-vars": ["warn", { args: "none", ignoreRestSiblings: true }],
+    },
   },
-  ignorePatterns: ['node_modules/', 'dist/'],
-};
+];

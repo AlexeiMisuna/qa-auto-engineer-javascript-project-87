@@ -1,16 +1,16 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-import genDiff from '../src/index.js';
+import path from "path";
+import { fileURLToPath } from "url";
+import genDiff from "../src/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-describe('gendiff tests', () => {
-  const fixtureDir = path.join(__dirname, '../__fixtures__');
+describe("gendiff tests", () => {
+  const fixtureDir = path.join(__dirname, "../__fixtures__");
 
-  test('JSON files', () => {
-    const file1 = path.join(fixtureDir, 'filepath1.json');
-    const file2 = path.join(fixtureDir, 'filepath2.json');
+  test("JSON files", () => {
+    const file1 = path.join(fixtureDir, "filepath1.json");
+    const file2 = path.join(fixtureDir, "filepath2.json");
 
     const expected = `{
 - follow: false
@@ -24,9 +24,9 @@ describe('gendiff tests', () => {
     expect(genDiff(file1, file2)).toBe(expected);
   });
 
-  test('YAML files', () => {
-    const file1 = path.join(fixtureDir, 'filepath1.yml');
-    const file2 = path.join(fixtureDir, 'filepath2.yml');
+  test("YAML files", () => {
+    const file1 = path.join(fixtureDir, "filepath1.yml");
+    const file2 = path.join(fixtureDir, "filepath2.yml");
 
     const expected = `{
 - follow: false
