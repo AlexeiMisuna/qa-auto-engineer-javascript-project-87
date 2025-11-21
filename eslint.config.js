@@ -1,4 +1,5 @@
 import js from "@eslint/js"
+import stylisticPlugin from "@stylistic/eslint-plugin"
 
 export default [
   js.configs.recommended,
@@ -6,6 +7,9 @@ export default [
   {
     files: ["**/*.js"],
     ignores: ["node_modules/", "dist/"],
+    plugins: {
+      "@stylistic": stylisticPlugin,
+    },
 
     languageOptions: {
       ecmaVersion: 2021,
