@@ -1,4 +1,4 @@
-const plain = diff => diff.map(node => {
+const plain = (diff) => diff.map((node) => {
   switch (node.type) {
     case 'removed':
       return `Property '${node.key}' was removed`

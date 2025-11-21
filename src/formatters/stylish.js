@@ -12,9 +12,9 @@ const formatValue = (value, depth) => {
   return `{\n${entries.join('\n')}\n${bracketIndent(depth)}}`
 }
 
-const stylish = tree => {
+const stylish = (tree) => {
   const iter = (node, depth) =>
-    node.map(item => {
+    node.map((item) => {
       switch (item.type) {
         case 'added':
           return `${indent(depth)}+ ${item.key}: ${formatValue(item.value, depth)}`
