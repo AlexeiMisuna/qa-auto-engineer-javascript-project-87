@@ -1,5 +1,5 @@
-import js from '@eslint/js';
-import stylisticPlugin from '@stylistic/eslint-plugin';
+import js from '@eslint/js'
+import stylisticPlugin from '@stylistic/eslint-plugin'
 
 export default [
   js.configs.recommended,
@@ -35,4 +35,4 @@ export default [
       'no-unused-vars': ['warn', { args: 'none', ignoreRestSiblings: true }],
     },
   },
-];
+]
