@@ -1,4 +1,4 @@
-import js from "@eslint/js";
+import js from "@eslint/js"
 
 export default [
   js.configs.recommended,
@@ -21,11 +21,11 @@ export default [
     },
 
     rules: {
-      semi: ["off"],
+      semi: ["warn", "never"],
       quotes: ["error", "double"],
       indent: ["error", 2],
       "no-console": "warn",
       "no-unused-vars": ["warn", { args: "none", ignoreRestSiblings: true }],
     },
   },
-];
+]
