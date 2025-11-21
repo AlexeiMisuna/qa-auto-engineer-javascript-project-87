@@ -8,7 +8,7 @@ const buildDiff = (obj1, obj2) => {
     const value2 = obj2[key]
 
     if (!Object.prototype.hasOwnProperty.call(obj2, key)) {
-      return { key, type: 'deleted', value: value1 }
+      return { key, type: 'removed', value: value1 }
     }
 
     if (!Object.prototype.hasOwnProperty.call(obj1, key)) {
