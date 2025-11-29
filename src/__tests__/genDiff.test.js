@@ -20,7 +20,6 @@ describe('genDiff', () => {
 
       expect(genDiff(file1, file2)).toBe(expected)
     })
-
     test('Содержание файлов абсолютно идентично', () => {
       const file1 = path.join(fixtures, 'file1.json')
       const file2 = path.join(fixtures, 'file1.json')
@@ -35,7 +34,6 @@ describe('genDiff', () => {
       expect(genDiff(file1, file2)).toBe(expected)
     })
   })
-
   describe('YAML files', () => {
     test('Частичное различие содержания файлов', () => {
       const file1 = path.join(fixtures, 'file1.yml')
@@ -65,6 +63,19 @@ describe('genDiff', () => {
 }`
 
       expect(genDiff(file1, file2)).toBe(expected)
+    })
+  })
+  describe('genDiff plain', () => {
+    test('Плоский формат для yaml', () => {
+      const file1 = path.join(fixtures, 'file1.yml')
+      const file2 = path.join(fixtures, 'file2.yml')
+
+      const expected = `Property 'follow' was removed
+Property 'proxy' was removed
+Property 'timeout' was updated. From 50 to 20
+Property 'verbose' was added with value: true`
+
+      expect(genDiff(file1, file2, 'plain')).toBe(expected)
     })
   })
 })
