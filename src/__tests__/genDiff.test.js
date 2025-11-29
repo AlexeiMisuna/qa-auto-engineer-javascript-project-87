@@ -1,14 +1,15 @@
 import path from 'path'
-import genDiff from '../index.js'
+import genDiff from '../src/index.js'
 
-const fixtures = './__fixtures__'
+const fixtures = path.join('.', '__fixtures__')
 
 describe('genDiff', () => {
-  test('Частичное различие содержания файлов', () => {
-    const file1 = path.join(fixtures, 'file1.json')
-    const file2 = path.join(fixtures, 'file2.json')
+  describe('JSON files', () => {
+    test('Частичное различие содержания файлов', () => {
+      const file1 = path.join(fixtures, 'file1.json')
+      const file2 = path.join(fixtures, 'file2.json')
 
-    const expected = `{
+      const expected = `{
   - follow: false
     host: hexlet.io
   - proxy: 123.234.53.22
@@ -17,32 +18,53 @@ describe('genDiff', () => {
   + verbose: true
 }`
 
-    expect(genDiff(file1, file2)).toBe(expected)
-  })
+      expect(genDiff(file1, file2)).toBe(expected)
+    })
 
-  test('Содержание файлов абсолютно идентично', () => {
-    const file1 = path.join(fixtures, 'file1.json')
-    const file2 = path.join(fixtures, 'file1.json')
+    test('Содержание файлов абсолютно идентично', () => {
+      const file1 = path.join(fixtures, 'file1.json')
+      const file2 = path.join(fixtures, 'file1.json')
 
-    const expected = `{
+      const expected = `{
     follow: false
     host: hexlet.io
     proxy: 123.234.53.22
     timeout: 50
 }`
 
-    expect(genDiff(file1, file2)).toBe(expected)
+      expect(genDiff(file1, file2)).toBe(expected)
+    })
   })
 
-  //   test('Содержание файлов абсолютно не идентично', () => {
-  //     const fileA = path.join(fixtures, 'fileA.json') // { "a": 1 }
-  //     const fileB = path.join(fixtures, 'fileB.json') // { "b": 2 }
+  describe('YAML files', () => {
+    test('Частичное различие содержания файлов', () => {
+      const file1 = path.join(fixtures, 'file1.yml')
+      const file2 = path.join(fixtures, 'file2.yml')
 
-  //     const expected = `{
-  //   - a: 1
-  //   + b: 2
-  // }`
+      const expected = `{
+  - follow: false
+    host: hexlet.io
+  - proxy: 123.234.53.22
+  - timeout: 50
+  + timeout: 20
+  + verbose: true
+}`
 
-//     expect(genDiff(fileA, fileB)).toBe(expected)
-//   })
+      expect(genDiff(file1, file2)).toBe(expected)
+    })
+
+    test('Содержание файлов абсолютно идентично', () => {
+      const file1 = path.join(fixtures, 'file1.yml')
+      const file2 = path.join(fixtures, 'file1.yml')
+
+      const expected = `{
+    follow: false
+    host: hexlet.io
+    proxy: 123.234.53.22
+    timeout: 50
+}`
+
+      expect(genDiff(file1, file2)).toBe(expected)
+    })
+  })
 })
