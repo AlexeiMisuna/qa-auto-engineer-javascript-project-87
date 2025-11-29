@@ -10,3 +10,9 @@
 
 #### Comparison of flat files (YML)
 [![asciicast](https://asciinema.org/a/AVZILbb4RbpblJklo2yRqR4Oo.svg)](https://asciinema.org/a/AVZILbb4RbpblJklo2yRqR4Oo)
+
+#### Flat format
+[![asciicast](https://asciinema.org/a/PbcqdqmkICaSwPt4IRhA9JQg8.svg)](https://asciinema.org/a/PbcqdqmkICaSwPt4IRhA9JQg8)
+
+#### Output in json
+[![asciicast](https://asciinema.org/a/gFB6HhAEYZgdx70xn9DWIBrvf.svg)](https://asciinema.org/a/gFB6HhAEYZgdx70xn9DWIBrvf)

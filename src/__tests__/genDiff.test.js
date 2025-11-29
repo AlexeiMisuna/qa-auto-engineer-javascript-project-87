@@ -78,4 +78,20 @@ Property 'verbose' was added with value: true`
       expect(genDiff(file1, file2, 'plain')).toBe(expected)
     })
   })
+  describe('gendiff json format', () => {
+    test('gendiff json format', () => {
+      const file1 = path.join(fixtures, 'file1.json')
+      const file2 = path.join(fixtures, 'file2.json')
+
+      const expected = JSON.stringify([
+        { key: 'follow', type: 'removed', value: false },
+        { key: 'host', type: 'unchanged', value: 'hexlet.io' },
+        { key: 'proxy', type: 'removed', value: '123.234.53.22' },
+        { key: 'timeout', type: 'changed', oldValue: 50, newValue: 20 },
+        { key: 'verbose', type: 'added', value: true },
+      ], null, 2)
+
+      expect(genDiff(file1, file2, 'json')).toBe(expected)
+    })
+  })
 })
