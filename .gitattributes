@@ -1,1 +1,28 @@
-* linguist-language=JavaScript
+# -------------------------------
+# Исключаем временные и сборочные файлы
+# -------------------------------
+dist/** linguist-generated=true
+build/** linguist-generated=true
+*.log linguist-generated=true
+*.tmp linguist-generated=true
+
+# -------------------------------
+# Отмечаем папки с внешними библиотеками как «vendored»
+# -------------------------------
+node_modules/** linguist-vendored=true
+vendor/** linguist-vendored=true
+
+# -------------------------------
+# Явно указываем язык только если нужно
+# -------------------------------
+# (Linguist обычно корректно определяет JS, CSS, HTML, TS, но можно добавить для отдельных файлов)
+*.js linguist-language=JavaScript
+*.ts linguist-language=TypeScript
+*.css linguist-language=CSS *.html linguist-language=HTML
+
+# -------------------------------
+# Настройки Git для конца строк
+# -------------------------------
+* text=auto
+*.sh text eol=lf
+*.bat text eol=crlf
