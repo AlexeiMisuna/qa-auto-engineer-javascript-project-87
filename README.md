@@ -7,3 +7,6 @@
 ### Asciinema:
 #### Comparison of flat files (JSON)
 [![asciicast](https://asciinema.org/a/p2H0iMBA2r9HiiFT2c7lNdcsu.svg)](https://asciinema.org/a/p2H0iMBA2r9HiiFT2c7lNdcsu)
+
+#### Comparison of flat files (YML)
+[![asciicast](https://asciinema.org/a/AVZILbb4RbpblJklo2yRqR4Oo.svg)](https://asciinema.org/a/AVZILbb4RbpblJklo2yRqR4Oo)
