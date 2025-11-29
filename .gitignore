@@ -2,4 +2,4 @@
 .cast
 .properties
 .vscode/*
-coverage/
+/coverage/
