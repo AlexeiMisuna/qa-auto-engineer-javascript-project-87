@@ -2,7 +2,7 @@
 [![Actions Status](https://github.com/AlexeiMisuna/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/AlexeiMisuna/qa-auto-engineer-javascript-project-87/actions)
 
 ### SonarQube review:
-[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=AlexeiMisuna_qa-auto-engineer-javascript-project-87)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=AlexeiMisuna_qa-auto-engineer-javascript-project-87)](https://sonarcloud.io/summary/new_code?id=AlexeiMisuna_qa-auto-engineer-javascript-project-87)
 
 ### Asciinema:
 #### Comparison of flat files (JSON)

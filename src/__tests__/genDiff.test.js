@@ -34,14 +34,14 @@ describe('genDiff', () => {
     expect(genDiff(file1, file2)).toBe(expected)
   })
 
-//   test('Содержание файлов абсолютно не идентично', () => {
-//     const fileA = path.join(fixtures, 'fileA.json') // { "a": 1 }
-//     const fileB = path.join(fixtures, 'fileB.json') // { "b": 2 }
+  //   test('Содержание файлов абсолютно не идентично', () => {
+  //     const fileA = path.join(fixtures, 'fileA.json') // { "a": 1 }
+  //     const fileB = path.join(fixtures, 'fileB.json') // { "b": 2 }
 
-//     const expected = `{
-//   - a: 1
-//   + b: 2
-// }`
+  //     const expected = `{
+  //   - a: 1
+  //   + b: 2
+  // }`
 
 //     expect(genDiff(fileA, fileB)).toBe(expected)
 //   })
