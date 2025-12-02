@@ -16,15 +16,15 @@ export default defineConfig([
   {
     files: ['**/*.{js,mjs,cjs}'],
     languageOptions: {
-      globals: globals.node,
+      globals: {
+        ...globals.node,
+        ...pluginJest.environments.globals.globals,
+      },
+      sourceType: 'module',
+      ecmaVersion: 2022,
     },
   },
 
-  {
-    languageOptions: {
-      globals: pluginJest.environments.globals.globals,
-    },
-  },
   {
     rules: {
       'no-unused-vars': 'warn',

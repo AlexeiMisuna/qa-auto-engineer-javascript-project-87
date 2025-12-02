@@ -8,10 +8,7 @@ lint-fix: #Фикс ошибок линтера
 	npx eslint --fix
 
 test: #Запуск тестов
-	npx jest
-
-test-watch: #Запуск тестов в режиме watch
-	npx jest --watch	
+	npm test
 
 compare-json: #Сравнение плоских файлов (JSON)
 	gendiff ./__fixtures__/file1.json ./__fixtures__/file2.json

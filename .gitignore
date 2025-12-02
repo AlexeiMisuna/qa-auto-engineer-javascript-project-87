@@ -2,4 +2,5 @@ coverage/
 /node_modules/
 .cast
 .properties
-.vscode/*
+.vscode/
+eslint-report.json
