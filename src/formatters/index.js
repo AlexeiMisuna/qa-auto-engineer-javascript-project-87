@@ -3,6 +3,7 @@ import plain from './plain.js'
 
 const getFormatter = (format) => {
   const formatters = {
+    stylish: formatStylish,
     formatStylish,
     plain,
     json: diffTree => JSON.stringify(diffTree, null, 2),
