@@ -1,28 +1,22 @@
-const formatValue = (value) => {
-  if (typeof value === 'string') return `'${value}'`
-  if (value === null) return 'null'
-  if (typeof value === 'object') return '[complex value]'
-  return String(value)
-}
+const formatPlain = (data) => {
+  const lines = data.flatMap((node) => {
+    const { key, type, value, value1, value2 } = node
 
-const plain = (diffTree) => {
-  const lines = diffTree.map((node) => {
-    const property = node.key
-    switch (node.type) {
+    switch (type) {
       case 'added':
-        return `Property '${property}' was added with value: ${formatValue(node.value)}`
+        return `Property '${key}' was added with value: ${String(value)}`
       case 'removed':
-        return `Property '${property}' was removed`
+        return `Property '${key}' was removed`
       case 'changed':
-        return `Property '${property}' was updated. From ${formatValue(node.oldValue)} to ${formatValue(node.newValue)}`
+        return `Property '${key}' was updated. From ${String(value1)} to ${String(value2)}`
       case 'unchanged':
-        return null
+        return []
       default:
-        return null
+        return []
     }
-  }).filter(Boolean)
+  })
 
   return lines.join('\n')
 }
 
-export default plain
+export default formatPlain

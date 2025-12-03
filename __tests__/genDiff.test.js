@@ -17,7 +17,7 @@ describe('gendiff', () => {
     const file2 = path.join(fixtures, 'file2.json')
 
     expect(genDiff(file1, file2).trim()).toEqual(readFixture('expected_stylish.txt'))
-    expect(genDiff(file1, file2, 'stylish').trim()).toEqual(readFixture('expected_stylish.txt'))
+    expect(genDiff(file1, file2, 'formatStylish').trim()).toEqual(readFixture('expected_stylish.txt'))
     expect(genDiff(file1, file2, 'plain').trim()).toEqual(readFixture('expected_plain.txt'))
     expect(genDiff(file1, file2, 'json').trim()).toEqual(readFixture('expected_json.txt'))
   })
@@ -27,7 +27,7 @@ describe('gendiff', () => {
     const file2 = path.join(fixtures, 'file2.yml')
 
     expect(genDiff(file1, file2).trim()).toEqual(readFixture('expected_stylish.txt'))
-    expect(genDiff(file1, file2, 'stylish').trim()).toEqual(readFixture('expected_stylish.txt'))
+    expect(genDiff(file1, file2, 'formatStylish').trim()).toEqual(readFixture('expected_stylish.txt'))
     expect(genDiff(file1, file2, 'plain').trim()).toEqual(readFixture('expected_plain.txt'))
     expect(genDiff(file1, file2, 'json').trim()).toEqual(readFixture('expected_json.txt'))
   })

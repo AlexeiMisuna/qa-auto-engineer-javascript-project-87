@@ -1,19 +1,26 @@
-import { parseFile } from './parser.js'
+import fs from 'fs'
+import path from 'path'
+import parseContent from './parser.js'
 import buildDiff from './diff.js'
-import stylish from './formatters/stylish.js'
-import plain from './formatters/plain.js'
-import json from './formatters/json.js'
+import getFormatter from './formatters/index.js'
 
-const genDiff = (filepath1, filepath2, format = 'stylish') => {
-  const data1 = parseFile(filepath1)
-  const data2 = parseFile(filepath2)
-  const diffTree = buildDiff(data1, data2)
+const buildFullpath = filepath => path.resolve(process.cwd(), filepath)
+const excludeFormat = filepath => path.extname(filepath).slice(1)
 
-  if (format === 'stylish') return stylish(diffTree)
-  if (format === 'plain') return plain(diffTree)
-  if (format === 'json') return json(diffTree)
+const readFile = (filepath) => {
+  const content = fs.readFileSync(buildFullpath(filepath), 'utf-8')
+  const format = excludeFormat(filepath)
+  return parseContent(content, format)
+}
 
-  throw new Error(`Unknown format: ${format}`)
+const genDiff = (filepath1, filepath2, format = 'formatStylish') => {
+  const data1 = readFile(filepath1)
+  const data2 = readFile(filepath2)
+
+  const diffData = buildDiff(data1, data2)
+
+  const formatter = getFormatter(format)
+  return formatter(diffData)
 }
 
 export default genDiff

@@ -1,15 +1,23 @@
-const stylish = (diffTree) => {
-  const lines = diffTree.map((node) => {
+const formatStylish = (data) => {
+  const lines = data.map((node) => {
     switch (node.type) {
-      case 'added': return `  + ${node.key}: ${node.value}`
-      case 'removed': return `  - ${node.key}: ${node.value}`
-      case 'unchanged': return `    ${node.key}: ${node.value}`
+      case 'added':
+        return `  + ${node.key}: ${String(node.value)}`
+      case 'removed':
+        return `  - ${node.key}: ${String(node.value)}`
+      case 'unchanged':
+        return `    ${node.key}: ${String(node.value)}`
       case 'changed':
-        return `  - ${node.key}: ${node.oldValue}\n  + ${node.key}: ${node.newValue}`
-      default: return ''
+        return `  - ${node.key}: ${String(node.value1)}
+  + ${node.key}: ${String(node.value2)}`
+      default:
+        return ''
     }
   })
-  return `{\n${lines.join('\n')}\n}`
+
+  return `{
+${lines.join('\n')}
+}`
 }
 
-export default stylish
+export default formatStylish
