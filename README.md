@@ -19,7 +19,7 @@ Difference Calculator — утилита командной строки для 
 
 
 ## Установка и запуск
-* Убедитесь, что у Вас установлен NodeJS не менее 18 версии
+* Убедитесь, что у Вас установлен NodeJS не менее 16.9.0 версии
 * Клонируйте репозиторий 
 `git clone https://github.com/AlexeiMisuna/qa-auto-engineer-javascript-project-87.git`
 * Перейдите в папку проекта 

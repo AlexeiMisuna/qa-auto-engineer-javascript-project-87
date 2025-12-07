@@ -7,17 +7,15 @@ const formatStylish = (data) => {
         return `  - ${node.key}: ${String(node.value)}`
       case 'unchanged':
         return `    ${node.key}: ${String(node.value)}`
-      case 'changed':
-        return `  - ${node.key}: ${String(node.value1)}
-  + ${node.key}: ${String(node.value2)}`
-      default:
-        return ''
+      case 'changed': {
+        const removedLine = '  - ' + node.key + ': ' + String(node.value1)
+        const addedLine = '  + ' + node.key + ': ' + String(node.value2)
+        return removedLine + '\n' + addedLine
+      }
     }
   })
 
-  return `{
-${lines.join('\n')}
-}`
+  return '{\n' + lines.join('\n') + '\n}'
 }
 
 export default formatStylish
