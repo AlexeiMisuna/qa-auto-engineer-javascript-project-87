@@ -1,14 +1,13 @@
-import formatStylish from './stylish.js'
+import stylish from './stylish.js'
 import formatPlain from './plain.js'
 
 const formatters = {
-  stylish: diffTree => formatStylish(diffTree),
-  formatStylish: diffTree => formatStylish(diffTree),
+  stylish: diffTree => stylish(diffTree),
   plain: diffTree => formatPlain(diffTree),
   json: diffTree => JSON.stringify(diffTree, null, 2),
 }
 
-const getFormatter = (diffTree, format) => {
+const formatDiff = (diffTree, format) => {
   const formatter = formatters[format]
   if (!formatter) {
     throw new Error(`Unknown format: ${format}`)
@@ -16,4 +15,4 @@ const getFormatter = (diffTree, format) => {
   return formatter(diffTree)
 }
 
-export default getFormatter
+export default formatDiff

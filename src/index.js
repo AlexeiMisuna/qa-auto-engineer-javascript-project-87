@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import parseContent from './parser.js'
 import buildDiff from './diff.js'
-import getFormatter from './formatters/index.js'
+import formatDiff from './formatters/index.js'
 
 const buildFullpath = filepath => path.resolve(process.cwd(), filepath)
 const getFileExtension = filepath => path.extname(filepath).slice(1)
@@ -19,7 +19,7 @@ const genDiff = (filepath1, filepath2, outputFormat = 'stylish') => {
 
   const diffData = buildDiff(data1, data2)
 
-  return getFormatter(diffData, outputFormat)
+  return formatDiff(diffData, outputFormat)
 }
 
 export default genDiff

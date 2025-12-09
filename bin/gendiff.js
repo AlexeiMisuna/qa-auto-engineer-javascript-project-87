@@ -11,7 +11,7 @@ program
   .version('1.0.0')
   .argument('<filepath1>', 'first file')
   .argument('<filepath2>', 'second file')
-  .option('-f, --format <type>', 'output format', 'formatStylish')
+  .option('-f, --format <type>', 'output format', 'stylish')
   .action((filepath1, filepath2, options) => {
     try {
       const diff = genDiff(filepath1, filepath2, options.format)
