@@ -1,8 +1,8 @@
-import stylish from './stylish.js'
+import formatStylish from './stylish.js'
 import formatPlain from './plain.js'
 
 const formatters = {
-  stylish: diffTree => stylish(diffTree),
+  stylish: diffTree => formatStylish(diffTree),
   plain: diffTree => formatPlain(diffTree),
   json: diffTree => JSON.stringify(diffTree, null, 2),
 }

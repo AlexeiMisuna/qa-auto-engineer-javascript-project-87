@@ -1,21 +1,29 @@
 const formatStylish = (data) => {
   const lines = data.map((node) => {
-    switch (node.type) {
+    const { type, key, value, value1, value2 } = node
+
+    switch (type) {
       case 'added':
-        return `  + ${node.key}: ${String(node.value)}`
+        return `  + ${key}: ${value}`
+
       case 'removed':
-        return `  - ${node.key}: ${String(node.value)}`
+        return `  - ${key}: ${value}`
+
       case 'unchanged':
-        return `    ${node.key}: ${String(node.value)}`
+        return `    ${key}: ${value}`
+
       case 'changed': {
-        const removedLine = '  - ' + node.key + ': ' + String(node.value1)
-        const addedLine = '  + ' + node.key + ': ' + String(node.value2)
-        return removedLine + '\n' + addedLine
+        const removedLine = `  - ${key}: ${value1}`
+        const addedLine = `  + ${key}: ${value2}`
+        return `${removedLine}\n${addedLine}`
       }
+
+      default:
+        return ''
     }
   })
 
-  return '{\n' + lines.join('\n') + '\n}'
+  return `{\n${lines.join('\n')}\n}`
 }
 
 export default formatStylish
